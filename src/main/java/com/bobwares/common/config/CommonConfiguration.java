@@ -10,7 +10,7 @@ public class CommonConfiguration {
 
 
     @Bean
-    public CommonMarker batchServerMarkerBean() {
+    public CommonMarker commonMarkerMarkerBean() {
         return new CommonMarker();
     }
 
