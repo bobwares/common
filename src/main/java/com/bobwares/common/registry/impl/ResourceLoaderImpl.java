@@ -18,6 +18,7 @@ public class ResourceLoaderImpl implements ResourceLoader {
   *
   *  Make a list of resource files contained in a folder with the required extension. Store
   *  the list in a map.
+  *
   */
 
   @Override

@@ -1,5 +1,6 @@
 package com.bobwares.common.registry.impl;
 
+import com.bobwares.common.registry.Registry;
 import com.bobwares.common.registry.RegistryBuilder;
 import com.bobwares.common.registry.RegistryKeyBuilder;
 import com.bobwares.common.registry.ResourceMapper;
@@ -12,27 +13,29 @@ import org.springframework.core.io.Resource;
 
 
 @Slf4j
-public class ResourceReaderImpl<T> implements ResourceReader {
+public class ResourceReaderImpl<T>  implements  ResourceReader {
 
-  private final ResourceMapper resourceMapper;
-
-  private final RegistryBuilder registryBuilder;
+  private final ResourceMapper<T> resourceMapper;
 
   private final RegistryKeyBuilder registryKeyBuilder;
 
-  public ResourceReaderImpl(ResourceMapper resourceMapper, RegistryBuilder registryBuilder, RegistryKeyBuilder registryKeyBuilder) {
+  private final Registry<T> registry;
+
+  public ResourceReaderImpl(
+      Registry<T> registry,
+      ResourceMapper resourceMapper,
+      RegistryKeyBuilder registryKeyBuilder) {
+    this.registry = registry;
     this.resourceMapper = resourceMapper;
-    this.registryBuilder = registryBuilder;
     this.registryKeyBuilder = registryKeyBuilder;
   }
 
-  @Override
-  public <T> void read(Map<String, Resource> resourceMap, Class<T> registryType) {
+  public void read(Map<String, Resource> resourceMap) {
     for (Entry<String, Resource> resourceEntry : resourceMap.entrySet()) {
       try {
-        T entry = resourceMapper.resourceToObject(resourceEntry.getValue(), registryType).orElseThrow(ResourceReaderException::new);
+        T entry = resourceMapper.resourceToObject(resourceEntry.getValue()).orElseThrow(ResourceReaderException::new);
         String registryKey = registryKeyBuilder.build(resourceEntry.getKey(), entry);
-        registryBuilder.put(registryKey, entry);
+        registry.put(registryKey, entry);
       } catch (Throwable throwable) {
         throwable.printStackTrace();
       }

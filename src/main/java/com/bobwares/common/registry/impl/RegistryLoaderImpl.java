@@ -36,6 +36,6 @@ public class RegistryLoaderImpl<T> implements RegistryLoader {
   @Override
   public void load() {
     final Map<String, Resource> resourceMap = resourceLoader.load(folder, extension);
-    resourceReader.read(resourceMap,registryType);
+    resourceReader.read(resourceMap);
   }
 }

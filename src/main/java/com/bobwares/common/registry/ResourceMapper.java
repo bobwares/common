@@ -3,8 +3,8 @@ package com.bobwares.common.registry;
 import java.util.Optional;
 import org.springframework.core.io.Resource;
 
-public interface ResourceMapper {
+public interface ResourceMapper<T> {
 
-  <T> Optional<T> resourceToObject(Resource resource, Class<T> registryType);
+  Optional<T> resourceToObject(Resource resource);
 
 }
