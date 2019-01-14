@@ -3,6 +3,7 @@ package com.bobwares.common.registry;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 public class Registry<T> {
 
@@ -22,5 +23,9 @@ public class Registry<T> {
 
   public int size() {
     return objectMap.size();
+  }
+
+  public Set<String> keySet() {
+    return objectMap.keySet();
   }
 }

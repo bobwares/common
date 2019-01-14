@@ -1,7 +1,7 @@
 package com.bobwares.common.registry;
 
-public interface RegistryLoader<T> {
+public interface RegistryLoader {
 
-  <T> void load();
+  void load();
 
 }

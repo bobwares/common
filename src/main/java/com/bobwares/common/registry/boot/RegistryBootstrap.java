@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class RegistryBootstrap implements InitializingBean {
 
-  private Collection<RegistryLoader<?>> registryLoaders;
+  private Collection<RegistryLoader> registryLoaders;
 
   @Autowired
-  public RegistryBootstrap(Collection<RegistryLoader<?>> registryLoaders) {
+  public RegistryBootstrap(Collection<RegistryLoader> registryLoaders) {
     this.registryLoaders = registryLoaders;
   }
 
@@ -25,7 +25,7 @@ public class RegistryBootstrap implements InitializingBean {
     log.info("Registries are loaded.");
   }
 
-  protected void loadRegistries() {
+  private void loadRegistries() {
     for (RegistryLoader registryLoader : registryLoaders) {
       registryLoader.load();
     }

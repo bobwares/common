@@ -1,4 +1,4 @@
-package com.bobwares.common.mapper;
+package com.bobwares.common.converter;
 
 import java.io.IOException;
 import java.util.HashMap;

@@ -17,4 +17,21 @@
 - RegistryLoader
   - Builds a registry by orchestrating calls to the ResourceLoader, ResourceReader, and RegistryBuilder.
 
+###Setup new registry
 
+- Create Registry Bean config JavaConfig class.
+   ~~~
+   @Bean
+   public Registry<JsonTemplateGroupDefinition> jsonTemplateGroupDefinition() {
+     return new Registry<>();
+   }
+   ~~~
+   
+### Loading a registry at Spring Context load time.
+
+- Create Resource Reader
+~~~~
+
+~~~~   
+   
+   

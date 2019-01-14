@@ -8,9 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
 
 @Slf4j
-public class RegistryLoaderImpl<T> implements RegistryLoader {
-
-  private final Class<T> registryType;
+public class RegistryLoaderImpl implements RegistryLoader {
 
   private final ResourceLoader resourceLoader;
 
@@ -24,13 +22,11 @@ public class RegistryLoaderImpl<T> implements RegistryLoader {
       ResourceLoader resourceLoader,
       ResourceReader resourceReader,
       String folder,
-      String extension,
-      Class<T> registryType) {
+      String extension) {
     this.resourceLoader = resourceLoader;
     this.resourceReader = resourceReader;
     this.folder = folder;
     this.extension = extension;
-    this.registryType = registryType;
   }
 
   @Override

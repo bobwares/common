@@ -1,7 +1,6 @@
 package com.bobwares.common.registry.impl;
 
 import com.bobwares.common.registry.Registry;
-import com.bobwares.common.registry.RegistryBuilder;
 import com.bobwares.common.registry.RegistryKeyBuilder;
 import com.bobwares.common.registry.ResourceMapper;
 import com.bobwares.common.registry.ResourceReader;
@@ -23,7 +22,7 @@ public class ResourceReaderImpl<T>  implements  ResourceReader {
 
   public ResourceReaderImpl(
       Registry<T> registry,
-      ResourceMapper resourceMapper,
+      ResourceMapper<T> resourceMapper,
       RegistryKeyBuilder registryKeyBuilder) {
     this.registry = registry;
     this.resourceMapper = resourceMapper;
